@@ -6,8 +6,9 @@ import { logout } from "@/actions/auth"
 import { DeleteButton } from "@/components/DeleteButton"
 import { Resource, UserSession } from "@/lib/types"
 import AboutModal from "@/components/AboutModal"
+import { ReactNode } from "react"
 
-export default async function DashboardPage(): Promise<JSX.Element> {
+export default async function DashboardPage(): Promise<ReactNode> {
   const user = (await getSession()) as UserSession | null
 
   if (!user) {
@@ -28,7 +29,7 @@ export default async function DashboardPage(): Promise<JSX.Element> {
           <div className="avatar">{user.name?.charAt(0)?.toUpperCase() || "U"}</div>
           <form action={logout} className="inline">
             <button className="btn btn-danger ml-2">
-              <i className="fas fa-sign-out-alt"></i> Deconnexion
+              <i className="fas fa-sign-out-alt"></i> Déconnexion
             </button>
           </form>
         </div>
@@ -39,7 +40,7 @@ export default async function DashboardPage(): Promise<JSX.Element> {
           <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
             <div>
               <h1 className="page-title">Mes Ressources</h1>
-              <p className="page-subtitle">Gerez toutes vos ressources en un seul endroit</p>
+              <p className="page-subtitle">Gérez toutes vos ressources en un seul endroit</p>
             </div>
             <div className="flex flex-wrap gap-3">
               <AboutModal />
@@ -53,9 +54,9 @@ export default async function DashboardPage(): Promise<JSX.Element> {
             <div className="text-center py-16">
               <div className="text-7xl mb-4 text-white">📄</div>
               <h3 className="text-2xl font-bold text-white mb-2">Aucune ressource</h3>
-              <p className="text-[#94a3b8] text-lg mb-6">Commencez par creer votre premiere ressource.</p>
+              <p className="text-[#94a3b8] text-lg mb-6">Commencez par créer votre première ressource.</p>
               <Link href="/ressources/nouveau" className="btn btn-primary">
-                <i className="fas fa-plus"></i> Creer une ressource
+                <i className="fas fa-plus"></i> Créer une ressource
               </Link>
             </div>
           ) : (
@@ -80,7 +81,7 @@ export default async function DashboardPage(): Promise<JSX.Element> {
                       </div>
                     </div>
                     <span className={`badge-status ${resource.published ? "published" : "draft"}`}>
-                      {resource.published ? "Publie" : "Brouillon"}
+                      {resource.published ? "Publié" : "Brouillon"}
                     </span>
                   </div>
                   <p className="text-[#cbd5e1] text-sm mt-2 line-clamp-2">{resource.content}</p>
@@ -100,7 +101,7 @@ export default async function DashboardPage(): Promise<JSX.Element> {
         </div>
 
         <footer className="footer">
-          <p>Developpe par <span>Mon General Hilaire</span> 2026</p>
+          <p>Développé par <span>Mon Général Hilaire</span> © 2026</p>
         </footer>
       </div>
     </main>
