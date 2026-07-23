@@ -8,7 +8,7 @@ interface DeleteButtonProps {
   id: string
 }
 
-export function DeleteButton({ id }: DeleteButtonProps): JSX.Element {
+export function DeleteButton({ id }: DeleteButtonProps) {
   const router = useRouter()
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
