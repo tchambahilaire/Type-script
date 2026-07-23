@@ -36,7 +36,7 @@ export async function createResource(
     return { success: true, data: resource }
   } catch (error) {
     if (error instanceof z.ZodError) {
-      const firstError = error.errors?.[0]?.message || "Données invalides"
+      const firstError = error.issues?.[0]?.message || "Données invalides"
       return { success: false, error: firstError }
     }
     return { success: false, error: "Erreur lors de la création" }
@@ -102,7 +102,7 @@ export async function updateResource(
     return { success: true, data: updated }
   } catch (error) {
     if (error instanceof z.ZodError) {
-      const firstError = error.errors?.[0]?.message || "Données invalides"
+      const firstError = error.issues?.[0]?.message || "Données invalides"
       return { success: false, error: firstError }
     }
     return { success: false, error: "Erreur lors de la modification" }
