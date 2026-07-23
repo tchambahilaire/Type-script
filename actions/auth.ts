@@ -60,7 +60,7 @@ export async function login(formData: FormData) {
   } catch (error) {
     console.error("❌ Erreur de connexion:", error)
     if (error instanceof z.ZodError) {
-      const firstError = error.errors[0]?.message || "Données invalides"
+      const firstError = error.issues?.[0]?.message || "Données invalides"
       return { error: firstError }
     }
     return { error: "Une erreur est survenue lors de la connexion" }
@@ -102,7 +102,7 @@ export async function register(formData: FormData) {
   } catch (error) {
     console.error("❌ Erreur d'inscription:", error)
     if (error instanceof z.ZodError) {
-      const firstError = error.errors[0]?.message || "Données invalides"
+      const firstError = error.issues?.[0]?.message || "Données invalides"
       return { error: firstError }
     }
     return { error: "Une erreur est survenue lors de l'inscription" }
