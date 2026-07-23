@@ -3,7 +3,7 @@ import { auth } from "@/lib/auth/auth-server"
 import { UserSession } from "@/lib/types"
 import AboutModal from "@/components/AboutModal"
 
-export default async function Home(): Promise<JSX.Element> {
+export default async function Home() {
   const user = (await auth()) as UserSession | null
 
   return (
