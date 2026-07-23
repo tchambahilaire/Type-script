@@ -8,7 +8,7 @@ interface PageProps {
   params: Promise<{ id: string }>
 }
 
-export default async function ResourcePage({ params }: PageProps): Promise<JSX.Element> {
+export default async function ResourcePage({ params }: PageProps) {
   const { id } = await params
 
   let resource: Resource
