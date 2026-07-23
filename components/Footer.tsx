@@ -1,6 +1,6 @@
 import Link from "next/link"
 
-export default function Footer(): JSX.Element {
+export default function Footer() {
   return (
     <footer className="border-t border-[#1f2a50] py-6 px-4 mt-auto">
       <div className="max-w-4xl mx-auto text-center">
