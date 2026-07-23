@@ -6,9 +6,8 @@ import { logout } from "@/actions/auth"
 import { DeleteButton } from "@/components/DeleteButton"
 import { Resource, UserSession } from "@/lib/types"
 import AboutModal from "@/components/AboutModal"
-import { ReactNode } from "react"
 
-export default async function DashboardPage(): Promise<ReactNode> {
+export default async function DashboardPage() {
   const user = (await getSession()) as UserSession | null
 
   if (!user) {
