@@ -1,6 +1,6 @@
 "use client"
 
-import { deleteResource } from "@/actions/resources"
+import { deleteRecipe } from "@/actions/recipes"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 
@@ -13,13 +13,13 @@ export function DeleteButton({ id }: DeleteButtonProps) {
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   async function handleDelete(): Promise<void> {
-    if (!confirm("Êtes-vous sûr de vouloir supprimer cette ressource ?")) {
+    if (!confirm("Êtes-vous sûr de vouloir supprimer cette recette ?")) {
       return
     }
 
     setIsLoading(true)
     try {
-      await deleteResource(id)
+      await deleteRecipe(id)
       router.push("/dashboard")
     } catch (error) {
       console.error(error)

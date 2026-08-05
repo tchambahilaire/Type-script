@@ -1,12 +1,7 @@
-// ========================================
-// TYPES UTILISATEUR
-// ========================================
-
 export interface User {
   id: string
   email: string
   name: string | null
-  password?: string
   createdAt: Date
   updatedAt: Date
 }
@@ -23,29 +18,33 @@ export interface UserSession {
   name: string | null
 }
 
-// ========================================
-// TYPES RESSOURCE
-// ========================================
-
-export interface Resource {
+export interface Recipe {
   id: string
   title: string
-  content: string
+  description: string
+  ingredients: string
+  instructions: string
+  prepTime: number
+  cookTime: number
+  difficulty: string
+  image: string | null
   published: boolean
   userId: string
   createdAt: Date
   updatedAt: Date
 }
 
-export interface ResourceInput {
+export interface RecipeInput {
   title: string
-  content: string
+  description: string
+  ingredients: string
+  instructions: string
+  prepTime: number
+  cookTime: number
+  difficulty: string
+  image?: string
   published?: boolean
 }
-
-// ========================================
-// TYPES SERVER ACTIONS
-// ========================================
 
 export interface ServerActionResponse<T = any> {
   success: boolean
