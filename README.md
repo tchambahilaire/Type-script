@@ -225,3 +225,5 @@ Mon Général Hilaire
 
     Email : tchamba.673949481.hilaire@gmail.com
 
+[![CI](https://github.com/tchambahilaire/mon-app-typescript/actions/workflows/ci.yml/badge.svg)](https://github.com/tchambahilaire/mon-app-typescript/actions/workflows/ci.yml)
+[![Coverage](https://codecov.io/gh/tchambahilaire/mon-app-typescript/branch/main/graph/badge.svg)](https://codecov.io/gh/tchambahilaire/mon-app-typescript)
