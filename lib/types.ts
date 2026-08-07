@@ -1,6 +1,5 @@
 // lib/types.ts
 
-// Types pour les ressources
 export interface Resource {
   id: string
   title: string
@@ -9,7 +8,6 @@ export interface Resource {
   updatedAt: Date
 }
 
-// Types pour les recettes
 export interface Recipe {
   id: string
   title: string
@@ -19,6 +17,8 @@ export interface Recipe {
   cookingTime?: number
   servings?: number
   image?: string
+  published?: boolean  // 👈 AJOUTE CETTE PROPRIÉTÉ
+  userId?: string      // 👈 AJOUTE AUSSI userId (si utilisé)
   createdAt: Date
   updatedAt: Date
 }
@@ -33,20 +33,17 @@ export interface UserSession {
   updatedAt?: Date
 }
 
-// Type générique pour les réponses des actions serveur
 export interface ServerActionResponse<T> {
   success: boolean
   data?: T
   error?: string
 }
 
-// Type pour les erreurs
 export interface ActionError {
   field?: string
   message: string
 }
 
-// Type pour les formulaires
 export interface FormState {
   errors?: ActionError[]
   message?: string
