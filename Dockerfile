@@ -2,16 +2,16 @@
 FROM node:20-alpine AS deps
 WORKDIR /app
 COPY package.json package-lock.json* ./
-COPY prisma ./prisma/  # 👈 AJOUT : Copie le dossier prisma
-RUN npm ci --only=production --ignore-scripts  # 👈 AJOUT : --ignore-scripts pour éviter postinstall
+COPY prisma ./prisma/
+RUN npm ci --only=production --ignore-scripts
 
 # Étape 2: Build de l'application
 FROM node:20-alpine AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
-COPY --from=deps /app/prisma ./prisma  # 👈 AJOUT
+COPY --from=deps /app/prisma ./prisma
 COPY . .
-RUN npx prisma generate  # 👈 AJOUT : Génère Prisma client
+RUN npx prisma generate
 RUN npm run build
 
 # Étape 3: Image finale légère
@@ -25,8 +25,8 @@ RUN addgroup -g 1001 nodejs && adduser -S nextjs -u 1001
 COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
 COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 COPY --from=builder --chown=nextjs:nodejs /app/public ./public
-COPY --from=builder --chown=nextjs:nodejs /app/prisma ./prisma  # 👈 AJOUT
-COPY --from=builder --chown=nextjs:nodejs /app/node_modules/@prisma ./node_modules/@prisma  # 👈 AJOUT
+COPY --from=builder --chown=nextjs:nodejs /app/prisma ./prisma
+COPY --from=builder --chown=nextjs:nodejs /app/node_modules/@prisma ./node_modules/@prisma
 
 USER nextjs
 EXPOSE 3000
