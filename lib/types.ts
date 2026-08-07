@@ -7,7 +7,6 @@ export interface Resource {
   description: string
   createdAt: Date
   updatedAt: Date
-  // Ajoute d'autres champs selon ton besoin
 }
 
 // Types pour les recettes
@@ -22,6 +21,16 @@ export interface Recipe {
   image?: string
   createdAt: Date
   updatedAt: Date
+}
+
+export interface UserSession {
+  id: string
+  email: string
+  name?: string
+  role?: string
+  image?: string
+  createdAt?: Date
+  updatedAt?: Date
 }
 
 // Type générique pour les réponses des actions serveur
