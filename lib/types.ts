@@ -1,30 +1,45 @@
 // lib/types.ts
+
+// Types pour les ressources
 export interface Resource {
   id: string
   title: string
   description: string
-  content?: string
-  createdAt?: Date
-  updatedAt?: Date
-  imageUrl?: string
-  category?: string
+  createdAt: Date
+  updatedAt: Date
   // Ajoute d'autres champs selon ton besoin
 }
 
-export interface User {
-  id: string
-  email: string
-  name?: string
-  // Ajoute d'autres champs selon ton besoin
-}
-
+// Types pour les recettes
 export interface Recipe {
   id: string
   title: string
   description: string
   ingredients: string[]
   instructions: string[]
-  prepTime?: number
-  cookTime?: number
+  cookingTime?: number
   servings?: number
+  image?: string
+  createdAt: Date
+  updatedAt: Date
+}
+
+// Type générique pour les réponses des actions serveur
+export interface ServerActionResponse<T> {
+  success: boolean
+  data?: T
+  error?: string
+}
+
+// Type pour les erreurs
+export interface ActionError {
+  field?: string
+  message: string
+}
+
+// Type pour les formulaires
+export interface FormState {
+  errors?: ActionError[]
+  message?: string
+  success?: boolean
 }
