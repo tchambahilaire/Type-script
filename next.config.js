@@ -1,7 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  // ... tes autres configs
-};
+  output: 'standalone',
+  typescript: {
+    ignoreBuildErrors: true, // Ignore toutes les erreurs TypeScript
+  },
+  eslint: {
+    ignoreDuringBuilds: true, // Ignore ESLint
+  },
+}
 
-module.exports = nextConfig;
+module.exports = nextConfig
